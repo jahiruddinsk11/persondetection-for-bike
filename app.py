@@ -12,8 +12,14 @@ app = Flask(__name__)
 model = YOLO("p91.pt")  # Your trained YOLO model for person detection
 
 # Initialize Pygame for sound
-pygame.mixer.init()
-sound = pygame.mixer.Sound("ktm.mp3")  # Load alert sound
+import ffmpeg  
+import subprocess
+
+def play_sound():
+    subprocess.Popen(["ffmpeg", "-i", "ktm.mp3", "-filter:a", "volume=1.0", "-autoexit"])
+
+play_sound()  # Call this when detecting a person
+
 
 # Open webcam
 cap = cv2.VideoCapture(0)
