@@ -1,9 +1,15 @@
 Flask
-opencv-python
+opencv-python-headless
+
 numpy
 torch
 ultralytics
 pygame
 gunicorn
-ffmpeg-python
+
+
+numpy
+opencv-python-headless
+gunicorn
+
 
