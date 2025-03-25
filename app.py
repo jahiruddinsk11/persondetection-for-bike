@@ -4,6 +4,8 @@ import torch
 import numpy as np
 import pygame
 from ultralytics import YOLO
+import os
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -63,5 +65,6 @@ def index():
 def video_feed():
     return Response(detect_person(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Railway assigns a port
+    app.run(host="0.0.0.0", port=port)
